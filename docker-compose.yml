@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend1:
+    build: .
+    container_name: florisys_backend_1
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - INSTANCE_NAME=Backend-Instancia-1
+      - DB_HOST=192.168.1.14
+      - DB_PORT=5432
+      - DB_USER=florisys_user
+      - DB_PASSWORD=florisys_pass
+      - DB_NAME=florisys_db
+      - FILE_SERVER_URL=http://192.168.1.15:8080
+    restart: always
+
+  backend2:
+    build: .
+    container_name: florisys_backend_2
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - INSTANCE_NAME=Backend-Instancia-2
+      - DB_HOST=192.168.1.14
+      - DB_PORT=5432
+      - DB_USER=florisys_user
+      - DB_PASSWORD=florisys_pass
+      - DB_NAME=florisys_db
+      - FILE_SERVER_URL=http://192.168.1.15:8080
+    restart: always
